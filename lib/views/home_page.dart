@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
                     print('Logout clicked');
                   } else if (value == 'personal_info') {
                     // Handle other actions if needed
-                    print('Personal Info clicked');
+                    Navigator.pushNamed(context, '/personal-info');
                   }
                 },
                 itemBuilder: (context) => [
@@ -41,26 +41,20 @@ class _HomePageState extends State<HomePage> {
         body: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            
-
-            
             OutlinedButton(
               onPressed: () {
-                print('Workouts Page button clicked');
+                Navigator.pushNamed(context, '/workouts');
               }, 
               child: const Text('Workouts Page'),
             ),
             
             OutlinedButton(
               onPressed: () {
-                print('Create Workout button clicked');
+                Navigator.pushNamed(context, '/create-workout');
               }, 
               child: const Text('Create Workout'),
             ),
-
           ]
-
-
         ),      
     );
   }

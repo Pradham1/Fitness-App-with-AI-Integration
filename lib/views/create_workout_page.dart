@@ -179,7 +179,11 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
               });
             },
           ),
-          ElevatedButton(onPressed: () => print('pressed'), child: Text('Create Workout')),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/result');
+            },
+            child: Text('Create Workout')),
 
         ],
       )

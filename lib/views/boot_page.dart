@@ -31,7 +31,7 @@ class _BootPageState extends State<BootPage> {
             ),
             TextButton(
               onPressed: () {
-                print('login');
+                Navigator.pushNamed(context, '/login');
               },
               style: TextButton.styleFrom(
                 backgroundColor: Colors.greenAccent,
