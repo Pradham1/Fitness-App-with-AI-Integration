@@ -97,25 +97,20 @@ class _LoginPageState extends State<LoginPage> {
                               final email = emailController.text;
                               final password = passwordController.text;
                               try{
-                              final userCredential = await FirebaseAuth.instance
-                                  .signInWithEmailAndPassword(
-                                      email: email, password: password);
-                                      print(userCredential);
+                                await FirebaseAuth.instance.signInWithEmailAndPassword(
+                                  email: email, 
+                                  password: password,
+                                );
+                                Navigator.pushNamed(context, '/home');              
                               } on FirebaseAuthException catch(e) {
                                 if (e.code == 'user-not-found') {
                                   print('No user found for that email.');
                                 } else if (e.code == 'wrong-password') {
                                   print('Wrong password provided for that user.');
                                 } else {
-                                  print('Error: ${e.message}');
+                                  print(e.code);
                                 }
                               }
-                               catch (e) {
-                                print('whoops');
-                                print(e);
-                                print(e.runtimeType);
-                              }
-                              
                             },
                             child: const Text('Login'),
                           ),

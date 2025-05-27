@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,10 +18,11 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: const Color.fromARGB(255, 240, 240, 220),
             actions: [
               PopupMenuButton<String>(
-                onSelected: (value) {
+                onSelected: (value) async {
                   if (value == 'logout') {
                     // Handle logout action
-                    print('Logout clicked');
+                    await FirebaseAuth.instance.signOut();
+                    Navigator.pushNamed(context, '/login');
                   } else if (value == 'personal_info') {
                     // Handle other actions if needed
                     Navigator.pushNamed(context, '/personal-info');
