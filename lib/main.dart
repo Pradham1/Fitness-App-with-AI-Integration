@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.greenAccent,
       ),
-      home: CreateWorkoutPage(),
+      home: ChatScreen(),
       routes: {
         '/home': (context) => HomePage(),
         '/create-workout': (context) => CreateWorkoutPage(),

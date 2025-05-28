@@ -49,30 +49,7 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
     });
   }
 
-  String response = 'Tap the button to ask your question!';
-  bool isLoading = false;
-
-  void fetchResponse() async {
-    setState(() {
-      isLoading = true;
-      response = "Thinking...";
-    });
-
-    try {
-      final result = await ChatApi.getChatCompletion('Make a sets and reps workout plan for $targets in the least amount of words');
-      setState(() {
-        response = result;
-      });
-    } catch (e) {
-      setState(() {
-        response = 'Error: ${e.toString()}';
-      });
-    } finally {
-      setState(() {
-        isLoading = false;
-      });
-    }
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -705,11 +682,11 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
                     children: [
                       Text(showSelected.toString()),
                       ElevatedButton(
-                        onPressed: isLoading ? null : () {
+                        onPressed: () {
                           
                           targets = showSelected.toList();
                           print('here are the values in targets:$targets');
-                          fetchResponse;
+                          
                           showSelected.clear();
                           clearBottomBar();           
                           Navigator.pushNamed(context, '/api-call');

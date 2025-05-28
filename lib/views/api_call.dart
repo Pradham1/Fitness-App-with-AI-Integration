@@ -71,51 +71,73 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(title: const Text("Ask OpenRouter")),
-      body: Column(
-        children: [
-          
-          Container(
+      body:
+         
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+          children: [
             
-            width: 400,
-            height: 400,
-            padding: EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.blueGrey,
-              border: Border.all()
-            ),
-            child: Expanded(child: Center(
-              child: Column(
-                children: [
-                  Text(response)
-                ],
-              ),
-            ))
-          ),
-          Row(
-            
-            children: [
+            Container(
               
-              ElevatedButton(
-                    onPressed: isLoading ? null : () {
-                      fetchResponse;
-                      
-                      },
-                    child: isLoading
-                        ? const CircularProgressIndicator(color: Colors.white)
-                        : const Text("Gym"),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      print('Make a sets and reps workout plan for $targets in the least amount of words');
-                    }, 
-                    child: 
-                      const Text('Print')
-                  ),
-            ],
-          )
-        ],
-      )
+              width: 400,
+              height: 400,
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.blueGrey,
+                border: Border.symmetric()
+              ),
+              child: Expanded(child: Center(
+                child: Column(
+                  children: [
+                    Text(response)
+                  ],
+                ),
+              ))
+            ),
+            Padding(padding: EdgeInsets.all(10)),
+            Column(
+              
+              children: [
+                
+                ElevatedButton(
+                      onPressed: isLoading ? null : () {
+                        fetchResponse;
+                        
+                        },
+                      child: isLoading
+                          ? const CircularProgressIndicator(color: Colors.white)
+                          : const Text("Generate"),
+                    ),
+                    Padding(padding: EdgeInsets.all(10)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        
+                        ElevatedButton(
+                          onPressed: () {
+                            targets.clear();
+                            Navigator.pushNamed(context, '/home');
+                          }, 
+                          child: 
+                            const Text('Cancel')
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            targets.clear();
+                          }, 
+                          child: 
+                            const Text('Save to Collection')
+                        ),
+                      ],
+                    ),
+              ],
+            )
+          ],
+                ),
+        )
       
     );
   }
