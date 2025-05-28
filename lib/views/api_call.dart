@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:workout_app/targets.dart';
 
 class ChatApi {
-  static const String apiKey = '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';
+  static const String apiKey = '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';
   static const String baseUrl = 'https://openrouter.ai/api/v1';
   static const String model = 'deepseek/deepseek-r1:free';
 
@@ -53,7 +53,7 @@ class _ChatScreenState extends State<ChatScreen> {
     });
 
     try {
-      final result = await ChatApi.getChatCompletion("Hello");
+      final result = await ChatApi.getChatCompletion('Make a sets and reps workout plan for $targets in the least amount of words');
       setState(() {
         response = result;
       });
@@ -72,29 +72,51 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Ask OpenRouter")),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(response, textAlign: TextAlign.center),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: isLoading ? null : fetchResponse,
-              child: isLoading
-                  ? const CircularProgressIndicator(color: Colors.white)
-                  : const Text("Hello'"),
+      body: Column(
+        children: [
+          
+          Container(
+            
+            width: 400,
+            height: 400,
+            padding: EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.blueGrey,
+              border: Border.all()
             ),
-            ElevatedButton(
-              onPressed: () {
-                print(targets);
-              }, 
-              child: 
-                const Text('Print')
-            ),
-          ],
-        ),
-      ),
+            child: Expanded(child: Center(
+              child: Column(
+                children: [
+                  Text(response)
+                ],
+              ),
+            ))
+          ),
+          Row(
+            
+            children: [
+              
+              ElevatedButton(
+                    onPressed: isLoading ? null : () {
+                      fetchResponse;
+                      
+                      },
+                    child: isLoading
+                        ? const CircularProgressIndicator(color: Colors.white)
+                        : const Text("Gym"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      print('Make a sets and reps workout plan for $targets in the least amount of words');
+                    }, 
+                    child: 
+                      const Text('Print')
+                  ),
+            ],
+          )
+        ],
+      )
+      
     );
   }
 }
