@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:workout_app/views/boot_page.dart';
 import 'package:workout_app/views/create_workout_page.dart';
-import 'package:workout_app/views/cwp2.dart';
+import 'package:workout_app/views/api_call.dart';
 import 'package:workout_app/views/home_page.dart';
 import 'package:workout_app/views/login_page.dart';
 import 'package:workout_app/views/personal_info_page.dart';
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.greenAccent,
       ),
-      home: ChatScreen(),
+      home: CreateWorkoutPage(),
       routes: {
         '/home': (context) => HomePage(),
         '/create-workout': (context) => CreateWorkoutPage(),
@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/personal-info': (context) => const PersonalInfoPage(),
         '/result': (context) => const ResultantWorkout(),
+        '/api-call': (context) => ChatScreen(),
       },
     );
   }

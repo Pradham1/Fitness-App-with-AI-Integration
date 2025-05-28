@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:workout_app/targets.dart';
 
 class ChatApi {
-  static const String apiKey = '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';
+  static const String apiKey = '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';
   static const String baseUrl = 'https://openrouter.ai/api/v1';
   static const String model = 'deepseek/deepseek-r1:free';
 
@@ -52,7 +53,7 @@ class _ChatScreenState extends State<ChatScreen> {
     });
 
     try {
-      final result = await ChatApi.getChatCompletion("What is the meaning of life?");
+      final result = await ChatApi.getChatCompletion("Hello");
       setState(() {
         response = result;
       });
@@ -82,7 +83,14 @@ class _ChatScreenState extends State<ChatScreen> {
               onPressed: isLoading ? null : fetchResponse,
               child: isLoading
                   ? const CircularProgressIndicator(color: Colors.white)
-                  : const Text("Ask 'What is the meaning of life?'"),
+                  : const Text("Hello'"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                print(targets);
+              }, 
+              child: 
+                const Text('Print')
             ),
           ],
         ),
