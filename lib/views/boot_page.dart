@@ -11,6 +11,7 @@ class _BootPageState extends State<BootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 204, 213, 174),
       body: 
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -34,7 +35,7 @@ class _BootPageState extends State<BootPage> {
                 Navigator.pushNamed(context, '/login');
               },
               style: TextButton.styleFrom(
-                backgroundColor: Colors.greenAccent,
+                backgroundColor: Colors.green,
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 textStyle: const TextStyle(fontSize: 18),

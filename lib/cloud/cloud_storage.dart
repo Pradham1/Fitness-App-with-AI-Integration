@@ -10,11 +10,17 @@ class CloudStorage {
 
     final plans = FirebaseFirestore.instance.collection('plans');
 
-    void createNewPlan({required String ownerUserId}) async {
-      plans.add({
+    Future<CloudPlan> createNewPlan({required String ownerUserId, required String plan}) async {
+      final document = await plans.add({
         ownerUserIdFieldName: ownerUserId,
-        textFieldName: '',
+        textFieldName: plan,
       });
+      final fetchedPlan = await document.get();
+      return CloudPlan(
+        documentId: fetchedPlan.id, 
+        ownerUserId: ownerUserId, 
+        text: '');
+
     }
 
     Stream<Iterable<CloudPlan>> allPlans({required String ownerUserId}) => 
@@ -37,13 +43,7 @@ class CloudStorage {
           isEqualTo: ownerUserId
         ).get().then(
           (value) => value.docs.map(
-            (doc){
-              return CloudPlan(
-                documentId: doc.id,
-                ownerUserId: doc.data()[ownerUserIdFieldName] as String,
-                text: doc.data()[textFieldName] as String,
-          );
-        }
+            (doc) => CloudPlan.fromSnapshot(doc),
       )
     );
       } catch (e) {

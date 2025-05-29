@@ -13,9 +13,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color.fromARGB(255, 250, 237, 205),
         appBar: AppBar(
             title: const Text('Home'),
-            backgroundColor: const Color.fromARGB(255, 240, 240, 220),
+            backgroundColor: Color.fromARGB(255, 204, 213, 174),
             actions: [
               PopupMenuButton<String>(
                 onSelected: (value) async {
@@ -41,7 +42,8 @@ class _HomePageState extends State<HomePage> {
               )
             ],
         ),
-        body: Row(
+        body: 
+        Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             OutlinedButton(

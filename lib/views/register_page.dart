@@ -31,7 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 240, 240, 220),
+        backgroundColor: Color.fromARGB(255, 204, 213, 174),
         body: FutureBuilder(
           future: Firebase.initializeApp(
             options: DefaultFirebaseOptions.currentPlatform,
@@ -111,6 +111,21 @@ class _RegisterPageState extends State<RegisterPage> {
                                   print('Error: ${e.code}');
                                 }
                               } 
+                              showDialog(
+                                context: context, 
+                                builder: (context) => AlertDialog(
+                                  backgroundColor: Color.fromARGB(255, 250, 237, 205),
+                                  title: const Text('Successfully Registered'),
+                                  content: const Text('You can now login with your credentials.'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pushNamed(context, '/login');
+                                      },
+                                      child: const Text('Login'),
+                                    ),
+                                  ],
+                                ));
                             },
                             child: const Text('Register'),
                           ),

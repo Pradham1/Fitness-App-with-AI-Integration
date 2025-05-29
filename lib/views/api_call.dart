@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:workout_app/targets.dart';
 
 class ChatApi {
-  static const String apiKey = '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';
+  static const String apiKey = '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';
   static const String baseUrl = 'https://openrouter.ai/api/v1';
   static const String model = 'deepseek/deepseek-r1:free';
 
@@ -43,7 +43,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  String response = 'Tap the button to ask your question!';
+  String response = 'Click Generate!';
   bool isLoading = false;
 
   void fetchResponse() async {
@@ -71,8 +71,10 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      appBar: AppBar(title: const Text("Ask OpenRouter")),
+      backgroundColor: Color.fromARGB(255, 250, 237, 205),
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 204, 213, 174),
+      ),
       body:
          
         Padding(
@@ -104,7 +106,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 
                 ElevatedButton(
                       onPressed: isLoading ? null : () {
-                        fetchResponse;
+                        fetchResponse();
                         
                         },
                       child: isLoading
@@ -122,7 +124,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             Navigator.pushNamed(context, '/home');
                           }, 
                           child: 
-                            const Text('Cancel')
+                            const Text('Home')
                         ),
                         ElevatedButton(
                           onPressed: () {

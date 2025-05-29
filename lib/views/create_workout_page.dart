@@ -54,13 +54,15 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      backgroundColor: Color.fromARGB(255, 250, 237, 205),
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255,204,213,174),
         title: const Text('Select Target Muscle Groups'),
       ),
       body: 
-      
+        
         SingleChildScrollView(
+          
           padding: EdgeInsets.all(16),
           child: Column(
             
@@ -69,6 +71,7 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
               //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
               const Text('Abs',style: TextStyle(fontSize: 24),),
                 ListTile(               
+                  tileColor: Color.fromARGB(255, 189, 224, 254),
                   shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(5),
@@ -108,6 +111,7 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
               //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
               const Text('Arms',style: TextStyle(fontSize: 24),),
               ListTile(
+                tileColor: Color.fromARGB(255, 189, 224, 254),
                   shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(5),
@@ -144,6 +148,7 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
                 ),
           
                 ListTile(               
+                  tileColor: Color.fromARGB(255, 189, 224, 254),
                   shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(5),
@@ -180,6 +185,7 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
                 ),
           
                 ListTile(               
+                  tileColor: Color.fromARGB(255, 189, 224, 254),
                   shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(5),
@@ -216,6 +222,7 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
                 ),
           
                 ListTile(               
+                  tileColor: Color.fromARGB(255, 189, 224, 254),
                   shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(5),
@@ -251,7 +258,8 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
                   },
                 ),
           
-                ListTile(               
+                ListTile(              
+                  tileColor: Color.fromARGB(255, 189, 224, 254), 
                   shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(5),
@@ -287,7 +295,8 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
                   },
                 ),
           
-                ListTile(               
+                ListTile(           
+                  tileColor: Color.fromARGB(255, 189, 224, 254),    
                   shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(5),
@@ -323,7 +332,8 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
                   },
                 ),
           
-                ListTile(               
+                ListTile(             
+                  tileColor: Color.fromARGB(255, 189, 224, 254),  
                   shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(5),
@@ -362,6 +372,7 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
               //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
               const Text('Back',style: TextStyle(fontSize: 24),),
               ListTile(               
+                tileColor: Color.fromARGB(255, 189, 224, 254),
                   shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(5),
@@ -398,6 +409,7 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
                 ),
           
                 ListTile(               
+                  tileColor: Color.fromARGB(255, 189, 224, 254),
                   shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(5),
@@ -434,6 +446,7 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
                 ),
           
                 ListTile(               
+                  tileColor: Color.fromARGB(255, 189, 224, 254),
                   shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(5),
@@ -472,6 +485,7 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
               //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
               const Text('Chest',style: TextStyle(fontSize: 24),),
               ListTile(               
+                tileColor: Color.fromARGB(255, 189, 224, 254),
                   shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(5),
@@ -510,6 +524,7 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
               //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
               const Text('Legs',style: TextStyle(fontSize: 24),),
               ListTile(               
+                tileColor: Color.fromARGB(255, 189, 224, 254),
                   shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(5),
@@ -544,7 +559,8 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
                     onTileDelete('lateral head of gastrocnemius');
                   },
                 ),
-                ListTile(               
+                ListTile(              
+                  tileColor: Color.fromARGB(255, 189, 224, 254), 
                   shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(5),
@@ -580,7 +596,8 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
                   },
                 ),
           
-                ListTile(               
+                ListTile(       
+                  tileColor: Color.fromARGB(255, 189, 224, 254),        
                   shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(5),
@@ -616,7 +633,8 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
                   },
                 ),
           
-                ListTile(               
+                ListTile(         
+                  tileColor: Color.fromARGB(255, 189, 224, 254),      
                   shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(5),
@@ -672,7 +690,7 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
 
             bottomNavigationBar: selectedText != null ? Container(
               
-              color: Colors.blue.shade100,
+              color: Color.fromARGB(255,204,213,174),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 child: SingleChildScrollView(
