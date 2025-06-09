@@ -1,16 +1,7 @@
 # workout_app
 
-A new Flutter project.
+An app made to target specific muscle groups for mid level athletes.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot_20250609_172631](https://github.com/user-attachments/assets/ee94e1dd-117a-407f-b05f-a3dad81bdb3f)
+![Screenshot_20250609_172718](https://github.com/user-attachments/assets/e06680d0-0ac1-462a-a8a7-1b1333bde9c9)
+![Screenshot_20250609_172801](https://github.com/user-attachments/assets/e24e51cc-b4fa-43a0-9c97-876702148f12)
