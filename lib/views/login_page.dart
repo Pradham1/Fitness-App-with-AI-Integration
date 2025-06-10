@@ -101,15 +101,13 @@ class _LoginPageState extends State<LoginPage> {
                                   email: email, 
                                   password: password,
                                 );
-                                Navigator.pushNamed(context, '/home');              
-                              } on FirebaseAuthException catch(e) {
-                                if (e.code == 'user-not-found') {
-                                  print('No user found for that email.');
-                                } else if (e.code == 'wrong-password') {
-                                  print('Wrong password provided for that user.');
-                                } else {
-                                  print(e.code);
-                                }
+                                Navigator.pushNamed(context, '/home');    
+                                print (FirebaseAuth.instance.currentUser?.email);          
+                              } on FirebaseAuthException{
+                                await showErrorDialog(
+                                  context, 
+                                  'Invalid credentials',
+                                );
                               }
                             },
                             child: const Text('Login'),
@@ -133,3 +131,23 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
       
+Future<void> showErrorDialog(
+  BuildContext context, 
+  String text,
+) async {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('An error occurred'),
+        content: Text(text),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      )
+    );
+  }

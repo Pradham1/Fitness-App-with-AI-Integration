@@ -5,7 +5,7 @@ import 'api_call.dart';
 
 
 class CreateWorkoutPage extends StatefulWidget {
-  CreateWorkoutPage({super.key});
+  const CreateWorkoutPage({super.key});
 
   @override
   State<CreateWorkoutPage> createState() => _CreateWorkoutPageState();

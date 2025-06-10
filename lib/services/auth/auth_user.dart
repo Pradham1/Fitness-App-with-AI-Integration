@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
@@ -6,14 +5,16 @@ import 'package:flutter/foundation.dart';
 class AuthUser {
   final String id;
   final String email;
-
-  AuthUser({
-    required this.id, 
+  
+  const AuthUser({
+    required this.id,
     required this.email,
-    });
+    
+  });
 
-    factory AuthUser.fromFirebase(User user) => AuthUser(
-      id: user.uid, 
-      email: user.email!
-    );
+  factory AuthUser.fromFirebase(User user) => AuthUser(
+        id: user.uid,
+        email: user.email!,
+        
+      );
 }

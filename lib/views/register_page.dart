@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:workout_app/firebase_options.dart';
+import 'package:workout_app/services/auth/auth_service.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -96,8 +97,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               final email = emailController.text;
                               final password = passwordController.text;
                               try{
-                              final userCredential = await FirebaseAuth.instance
-                                  .createUserWithEmailAndPassword(
+                              final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
                                       email: email, password: password);
                               print(userCredential);
                               } on FirebaseAuthException catch (e) {

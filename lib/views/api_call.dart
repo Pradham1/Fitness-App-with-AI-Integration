@@ -1,10 +1,13 @@
 import 'dart:convert';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:workout_app/cloud/cloud_plan.dart';
+import 'package:workout_app/cloud/cloud_storage.dart';
 import 'package:workout_app/targets.dart';
 
 class ChatApi {
-  static const String apiKey = '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';
+  static const String apiKey = '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';
   static const String baseUrl = 'https://openrouter.ai/api/v1';
   static const String model = 'deepseek/deepseek-r1:free';
 
@@ -38,13 +41,34 @@ class ChatApi {
 
 
 class ChatScreen extends StatefulWidget {
+  const ChatScreen({super.key});
+
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  CloudNote? _note;
+  late final FirebaseCloudStorage _notesService;
+  late final TextEditingController _textController;
+  late final currentUserId = FirebaseAuth.instance.currentUser?.uid;
+
   String response = 'Click Generate!';
   bool isLoading = false;
+
+  @override
+  void initState() {
+    _notesService = FirebaseCloudStorage();
+    _textController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
+
 
   void fetchResponse() async {
     setState(() {
@@ -127,7 +151,10 @@ class _ChatScreenState extends State<ChatScreen> {
                             const Text('Home')
                         ),
                         ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
+                            await _notesService.createNewNote(ownerUserId: currentUserId!, apiText: response);
+
+
                             targets.clear();
                           }, 
                           child: 

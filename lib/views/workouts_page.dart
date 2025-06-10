@@ -1,12 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:workout_app/services/auth/auth_service.dart';
+import 'package:workout_app/services/crud/workouts_service.dart';
 
 
 class WorkoutsPage extends StatefulWidget {
+  const WorkoutsPage({super.key});
+
   @override
   _WorkoutsPageState createState() => _WorkoutsPageState();
 }
 
 class _WorkoutsPageState extends State<WorkoutsPage> {
+
+
+  late final WorkoutsService _workoutsService;
+
+  void initState() {
+    _workoutsService = WorkoutsService();
+    _workoutsService.open();
+    super.initState();
+    
+  }
+
+  void dispose() {
+    _workoutsService.close();
+    super.dispose();
+  }
+
   List<String> workouts = [];
 
   void _generateWorkout() {
@@ -18,38 +38,9 @@ class _WorkoutsPageState extends State<WorkoutsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Your Workouts')),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: GridView.builder(
-          itemCount: workouts.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // 2 cards per row
-            crossAxisSpacing: 12,
-            mainAxisSpacing: 12,
-            childAspectRatio: 3 / 4,
-          ),
-          itemBuilder: (context, index) {
-            return Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: const Color.fromARGB(255, 0, 0, 0), width: 4),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Center(
-                child: Text(
-                  workouts[index],
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-              ),
-            );
-          },
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _generateWorkout,
-        backgroundColor: const Color.fromARGB(255, 147, 115, 19),
-        child: Icon(Icons.add),
-        tooltip: 'Generate Workout',
+      appBar: AppBar(
+        title: const Text('Workouts'),
+
       ),
     );
   }
