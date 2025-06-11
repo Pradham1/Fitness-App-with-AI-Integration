@@ -1,47 +1,51 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:workout_app/services/auth/auth_service.dart';
-import 'package:workout_app/services/crud/workouts_service.dart';
-
+import 'package:workout_app/cloud/cloud_plan.dart';
+import 'package:workout_app/cloud/cloud_storage.dart';
+import 'package:workout_app/views/workouts_list.dart';
 
 class WorkoutsPage extends StatefulWidget {
   const WorkoutsPage({super.key});
 
   @override
-  _WorkoutsPageState createState() => _WorkoutsPageState();
+  State<WorkoutsPage> createState() => _WorkoutsPageState();
 }
 
 class _WorkoutsPageState extends State<WorkoutsPage> {
 
+  late final FirebaseCloudStorage _notesService;
+  late final userId = FirebaseAuth.instance.currentUser!.uid;
 
-  late final WorkoutsService _workoutsService;
-
+  @override
   void initState() {
-    _workoutsService = WorkoutsService();
-    _workoutsService.open();
+    _notesService = FirebaseCloudStorage();
     super.initState();
-    
-  }
-
-  void dispose() {
-    _workoutsService.close();
-    super.dispose();
-  }
-
-  List<String> workouts = [];
-
-  void _generateWorkout() {
-    setState(() {
-      workouts.add('Workout ${workouts.length + 1}');
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 250, 237, 205),
       appBar: AppBar(
-        title: const Text('Workouts'),
-
+        title: const Text('Stored Workouts'),
+        backgroundColor: Color.fromARGB(255, 204, 213, 174),
       ),
+      body: StreamBuilder(
+        stream: _notesService.allNotes(ownerUserId: userId), 
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+            case ConnectionState.active:
+              if (snapshot.hasData) {
+                final allNotes = snapshot.data as Iterable<CloudNote>;
+                return WorkoutsList(notes: allNotes);
+              } else {
+                return CircularProgressIndicator();
+              }
+            default: return CircularProgressIndicator();
+          }
+        }),
     );
   }
 }

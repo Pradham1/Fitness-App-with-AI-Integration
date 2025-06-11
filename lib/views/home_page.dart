@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +17,9 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Color.fromARGB(255, 250, 237, 205),
         appBar: AppBar(
             title: const Text('Home'),
+            centerTitle: true,
             backgroundColor: Color.fromARGB(255, 204, 213, 174),
+            automaticallyImplyLeading: false,
             actions: [
               PopupMenuButton<String>(
                 onSelected: (value) async {
@@ -42,23 +46,59 @@ class _HomePageState extends State<HomePage> {
             ],
         ),
         body: 
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            OutlinedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/workouts');
-              }, 
-              child: const Text('Workouts Page'),
-            ),
-            
-            OutlinedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/create-workout');
-              }, 
-              child: const Text('Create Workout'),
-            ),
-          ]
+        
+        Container(
+          padding: const EdgeInsets.only(top:400),
+          child: Row(
+            spacing: 20,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GestureDetector(
+                onTap: () => Navigator.pushNamed(context, '/workouts'),
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 189, 224, 254),
+                    border: Border.all(color: Colors.black, width: 1.0),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  height: 170,
+                  width: 170,
+                  alignment: Alignment.center,
+                  child: const Text('Workouts \nPage',
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  
+                ),
+              ),
+              
+              GestureDetector(
+                onTap: () => Navigator.pushNamed(context, '/create-workout'),
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 189, 224, 254),
+                    border: Border.all(color: Colors.black, width: 1.0),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  height: 170,
+                  width: 170,
+                  alignment: Alignment.center,                
+                  child: const Text('Create \nWorkout',
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),  
+                ),
+              ),
+            ]
+          ),
         ),      
     );
   }

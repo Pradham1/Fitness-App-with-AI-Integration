@@ -7,7 +7,7 @@ import 'package:workout_app/cloud/cloud_storage.dart';
 import 'package:workout_app/targets.dart';
 
 class ChatApi {
-  static const String apiKey = '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';
+  static const String apiKey = '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';
   static const String baseUrl = 'https://openrouter.ai/api/v1';
   static const String model = 'deepseek/deepseek-r1:free';
 
@@ -55,6 +55,8 @@ class _ChatScreenState extends State<ChatScreen> {
 
   String response = 'Click Generate!';
   bool isLoading = false;
+
+  late final String workout = response;
 
   @override
   void initState() {
@@ -151,11 +153,10 @@ class _ChatScreenState extends State<ChatScreen> {
                             const Text('Home')
                         ),
                         ElevatedButton(
-                          onPressed: () async {
+                          onPressed: () async {                            
                             await _notesService.createNewNote(ownerUserId: currentUserId!, apiText: response);
-
-
                             targets.clear();
+                            Navigator.pushNamed(context, '/home');
                           }, 
                           child: 
                             const Text('Save to Collection')
