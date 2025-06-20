@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:workout_app/targets.dart';
-import 'package:http/http.dart' as http;
-import 'api_call.dart';
 
 
 class CreateWorkoutPage extends StatefulWidget {
@@ -61,11 +59,9 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
       ),
       body: 
         
-        SingleChildScrollView(
-          
+        SingleChildScrollView(          
           padding: EdgeInsets.all(16),
-          child: Column(
-            
+          child: Column(            
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------

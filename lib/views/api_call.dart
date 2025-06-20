@@ -2,12 +2,11 @@ import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:workout_app/cloud/cloud_plan.dart';
 import 'package:workout_app/cloud/cloud_storage.dart';
 import 'package:workout_app/targets.dart';
 
 class ChatApi {
-  static const String apiKey = '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';
+  static const String apiKey = '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';
   static const String baseUrl = 'https://openrouter.ai/api/v1';
   static const String model = 'deepseek/deepseek-r1:free';
 
@@ -48,7 +47,6 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  CloudNote? _note;
   late final FirebaseCloudStorage _notesService;
   late final TextEditingController _textController;
   late final currentUserId = FirebaseAuth.instance.currentUser?.uid;
@@ -105,70 +103,67 @@ class _ChatScreenState extends State<ChatScreen> {
          
         Padding(
           padding: const EdgeInsets.all(20),
-          child: Column(
-          children: [
-            
-            Container(
-              
-              width: 400,
-              height: 400,
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.blueGrey,
-                border: Border.symmetric()
+          child: SingleChildScrollView(
+            child: Column(              
+            children: [              
+              Container(                
+                width: 400,
+                height: 400,
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.blueGrey,
+                  border: Border.symmetric()
+                ),
+                child: Expanded(child: Center(
+                  child: Column(
+                    children: [
+                      Text(response)
+                    ],
+                  ),
+                ))
               ),
-              child: Expanded(child: Center(
-                child: Column(
-                  children: [
-                    Text(response)
-                  ],
-                ),
-              ))
-            ),
-            Padding(padding: EdgeInsets.all(10)),
-            Column(
-              
-              children: [
-                
-                ElevatedButton(
-                      onPressed: isLoading ? null : () {
-                        fetchResponse();
-                        
-                        },
-                      child: isLoading
-                          ? const CircularProgressIndicator(color: Colors.white)
-                          : const Text("Generate"),
-                    ),
-                    Padding(padding: EdgeInsets.all(10)),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        
-                        ElevatedButton(
-                          onPressed: () {
-                            targets.clear();
-                            Navigator.pushNamed(context, '/home');
-                          }, 
-                          child: 
-                            const Text('Home')
-                        ),
-                        ElevatedButton(
-                          onPressed: () async {                            
-                            await _notesService.createNewNote(ownerUserId: currentUserId!, apiText: response);
-                            targets.clear();
-                            Navigator.pushNamed(context, '/home');
-                          }, 
-                          child: 
-                            const Text('Save to Collection')
-                        ),
-                      ],
-                    ),
-              ],
-            )
-          ],
-                ),
+              Padding(padding: EdgeInsets.all(10)),
+              Column(                
+                children: [                  
+                  ElevatedButton(
+                        onPressed: isLoading ? null : () {
+                          fetchResponse();                          
+                          },
+                        child: isLoading
+                            ? const CircularProgressIndicator(color: Colors.white)
+                            : const Text("Generate"),
+                      ),
+                      Padding(padding: EdgeInsets.all(10)),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          
+                          ElevatedButton(
+                            onPressed: () {
+                              targets.clear();
+                              Navigator.pushNamed(context, '/home');
+                            }, 
+                            child: 
+                              const Text('Home')
+                          ),
+                          ElevatedButton(
+                            onPressed: () async {                            
+                              await _notesService.createNewNote(ownerUserId: currentUserId!, apiText: response);
+                              targets.clear();
+                              Navigator.pushNamed(context, '/home');
+                            }, 
+                            child: 
+                              const Text('Save to Collection')
+                          ),
+                        ],
+                      ),
+                ],
+              )
+            ],
+                  ),
+          ),
         )
-      
+
     );
   }
 }

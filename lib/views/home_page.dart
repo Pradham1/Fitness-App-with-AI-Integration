@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -48,7 +46,7 @@ class _HomePageState extends State<HomePage> {
         body: 
         
         Container(
-          padding: const EdgeInsets.only(top:400),
+          padding: const EdgeInsets.only(top:50),
           child: Row(
             spacing: 20,
             mainAxisAlignment: MainAxisAlignment.center,
